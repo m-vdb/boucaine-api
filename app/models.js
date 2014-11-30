@@ -21,10 +21,16 @@ function createCode (params) {
   return code;
 }
 
-function verifyCode(params) {
-  // return null if not found
-  // return false if already verified
-  // return the code otherwise
+function verifyCode (params, callback) {
+  params = _.pick(params, 'hash', 'type');
+  var code = Code.findOne(params, function (err, code) {
+    var ret = code ? (code.verified ? false : code) : null;
+    if (ret) {
+      code.verified = true;
+      code.save();
+    }
+    callback(err, ret);
+  });
 }
 
 // module exports
