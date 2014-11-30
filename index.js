@@ -1,4 +1,5 @@
 var restify = require('restify');
+var port = process.env.PORT || 8080;
 
 var server = restify.createServer({
   name: 'api',
@@ -13,6 +14,6 @@ server.get('/hello/:name', function (req, res, next) {
   return next();
 });
 
-server.listen(8080, function () {
+server.listen(port, function () {
   console.log('%s listening at %s', server.name, server.url);
 });
