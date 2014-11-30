@@ -18,13 +18,13 @@ server.use(restify.queryParser());
 server.use(restify.bodyParser());
 
 // code generation
-server.post('/code', function (req, res, next) {
+server.post('/codes', function (req, res, next) {
   res.send(models.createCode(req.params));
   return next();
 });
 
 // code verification
-server.put('/code/:hash', function (req, res, next) {
+server.put('/codes/:hash', function (req, res, next) {
   var code = models.verifyCode(req.params);
   // if code is null -> 404
   // if code is false -> 400
