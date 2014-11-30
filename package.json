@@ -14,7 +14,9 @@
   "author": "mvdb",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^2.4.1",
     "mongoose": "^3.8.19",
+    "randomstring": "^1.0.3",
     "restify": "^2.8.3"
   }
 }

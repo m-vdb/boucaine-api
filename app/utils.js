@@ -1,6 +1,7 @@
+var randomstring = require("randomstring");
+
 module.exports = {
   generateCode: function () {
-    // TODO
-    return "";
+    return randomstring.generate(7);
   }
 };
