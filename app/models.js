@@ -12,9 +12,10 @@ codeSchema.path('hash').index({unique: true});
 
 var Code = mongoose.model('Code', codeSchema);
 
-function createCodes(params) {
+function createCode(params) {
   // take limit, type pizza, number
-  // create `limit` Codes
+  // 1 code
+  // try 3 times to save the code in case of code duplicate in database
   // return them
   return [];
 }
@@ -28,6 +29,6 @@ function verifyCode(params) {
 // module exports
 module.exports = {
   Code: Code,
-  createCodes: createCodes,
+  createCode: createCode,
   verifyCode: verifyCode
 };

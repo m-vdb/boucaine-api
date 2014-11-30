@@ -19,7 +19,7 @@ server.use(restify.bodyParser());
 
 // code generation
 server.post('/code', function (req, res, next) {
-  res.send(models.createCodes(req.params));
+  res.send(models.createCode(req.params));
   return next();
 });
 
