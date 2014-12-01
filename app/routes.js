@@ -12,10 +12,10 @@ module.exports = {
       var httpError = null;
       next.ifError(err);
       if (code == null) {
-        httpError = new restify.errors.ResourceNotFoundError("Code not found.");
+        httpError = new restify.errors.ResourceNotFoundError("Code invalide, inconnu.");
       }
       else if (code == false) {
-        httpError = new restify.errors.BadRequestError("Code already verified");
+        httpError = new restify.errors.BadRequestError("Code déjà vérifié.");
       }
       else {
         res.send(code);
