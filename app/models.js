@@ -22,6 +22,7 @@ function createCode (params) {
 
 function verifyCode (params, callback) {
   params = _.pick(params, 'hash', 'type');
+  params.type = params.type || 'promo';
   var code = Code.findOne(params, function (err, code) {
     var ret = code ? (code.verified ? false : code) : null;
     if (ret) {
