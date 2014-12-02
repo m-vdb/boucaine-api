@@ -14,9 +14,13 @@ var server = restify.createServer({
   name: 'api',
   version: '1.0.0'
 });
+server.pre(restify.CORS({
+  origins: ["*"]
+}));
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
+server.use(restify.fullResponse());
 
 // routes
 server.post('/codes', routes.create);
