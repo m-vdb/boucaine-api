@@ -6,10 +6,22 @@ var codeSchema = mongoose.Schema({
   type: {type: String, default: 'pizza'},
   number: {type: Number, default: 1},
   verified: {type: Boolean, default: false},
-  hash: {type: String, default: utils.generateCode, unique: true}
+  hash: {type: String, default: utils.generateCode, unique: true},
+  created_at: {type: Date},
+  updated_at: {type: Date}
 }, {autoIndex: false});
 
 codeSchema.path('hash').index({unique: true});
+
+// updated_at and created_at timestamp
+codeSchema.pre('save', function(next){
+  var now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+});
 
 var Code = mongoose.model('Code', codeSchema);
 
