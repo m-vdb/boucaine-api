@@ -14,7 +14,7 @@ codeSchema.path('hash').index({unique: true});
 var Code = mongoose.model('Code', codeSchema);
 
 function createCode (params) {
-  params = _.pick(params, 'limit', 'type', 'number');
+  params = _.pick(params, 'type', 'number');
   var code = new Code(params);
   code.save();
   return code;
